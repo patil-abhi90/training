@@ -11,26 +11,30 @@ public class Filereaderandcharcount {
       Scanner sc= new Scanner(file);
       while(sc.hasNextLine()) {
       String line= sc.nextLine();
+      int[] freq = new int[line.length()];  
       int stringsize = line.length();
-	  char c = 'j';
-	  String duplicateChar = "";
-	  for(int i = 0 ; i < stringsize ; i++) {
-		int count = 0;
-		for(int j = 0 ; j < stringsize ; j++) {
-			if(line.charAt(j) == line.charAt(i)) {
-				count++;
-			}
-		}
-       if(count > 1) {
-			if(duplicateChar.contains(String.valueOf(line.charAt(i)))) {
-				
-			}else {
-				System.out.println("maximum character found " + line.charAt(i)  +  " with " + count + " Occurrences" );
-				duplicateChar = duplicateChar + String.valueOf(line.charAt(i)); 
+     int i, j, max;
+	 char maxChar=line.charAt(0);
+	 char string[]=line.toCharArray();
+	 for(i = 0; i < string.length; i++) {  
+         freq[i] = 1;  
+         for(j = i+1; j < string.length; j++) {  
+             if(string[i] == string[j] && string[i] != ' ' && string[i] != '0') {  
+                 freq[i]++;  
+              string[j]='0';
+              
 			 }
           }
         }
+	 max=freq[0];
+	 for(i = 0; i <freq.length; i++) {  
+		  if(max < freq[i]) {  
+              max = freq[i];  
+              maxChar = string[i];  
+	 }
       }
+	 System.out.println("Maximum occurring character: " + maxChar);  
     }
+	}
    }
 
