@@ -22,4 +22,5 @@ public class Positivenegativenumber {
     	 
         System.out.println(z + " is zero.");
   }
-}}
+  }
+ }
